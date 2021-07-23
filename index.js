@@ -56,6 +56,9 @@ window.addEventListener("load", ()=>{
                     path : 'hello.json'
                 });
             });
+            //================================================= 0-576
+            wait.classList.add("waitNone");
+            
         }
 
         countWait.innerHTML = x+"%";

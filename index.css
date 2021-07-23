@@ -736,6 +736,41 @@ nav .icon i.fb{
 }
 
 @media (max-width:576px){
+    /*=================KEYBOARD=================*/
+    .waitNone{
+        
+    }
+
+    #bubble{
+        width: max-content;
+        top: 60px;
+        right: -100px;
+    }
+
+    #bubble::after{
+        width: 20px;
+        height: 30px;
+        top: -15px;
+        left: -10px;
+        transform: rotate(135deg);
+        -webkit-transform: rotate(135deg);
+        -moz-transform: rotate(135deg);
+        -ms-transform: rotate(135deg);
+        -o-transform: rotate(135deg);
+}
+
+    #bubble p{
+        display: none;
+    }
+
+    #ok{
+        margin: 10px;
+    }
+
+    #keyboard{
+        display: none;
+    }
+
     /*=================ALL=================*/
     #header{
         font-size: 2em;
@@ -775,8 +810,8 @@ nav .icon i.fb{
         height: 80px;
     }
 
-    #abilities img{
-        width: 40px;
+    #abilities .content-abilities img{
+        width: 35px;
     }
 
     #abilities p{

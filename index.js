@@ -66,7 +66,7 @@ window.addEventListener("load", ()=>{
         x++;
         return x;
     }
-    setInterval(innerWait, 30);
+    setInterval(innerWait, 20);
 });
 
 
@@ -89,9 +89,9 @@ for( let hover = 0; hover<hoverAll.length; hover++ ){
             two = two.replace("-", "");
             let three = (count-90)+"%";
             three = three.replace("-", "");
-            let four = (count-90)+"%";
+            let four = (count-70)+"%";
             four = four.replace("-", "");
-            let five = (count-80)+"%";
+            let five = (count-70)+"%";
             five = five.replace("-", "");
 
             replaceAll[0].innerHTML = one;

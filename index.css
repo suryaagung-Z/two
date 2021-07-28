@@ -147,6 +147,17 @@ body{
     -o-transform: translate(1px, 1px);
 }
 
+.keyClick{
+    width: 49px;
+    height: 49px;
+    box-shadow: 0 0 var(--gray);
+    transform: translate(1px, 1px);
+    -webkit-transform: translate(1px, 1px);
+    -moz-transform: translate(1px, 1px);
+    -ms-transform: translate(1px, 1px);
+    -o-transform: translate(1px, 1px);
+}
+
 #ok{
     width: max-content;
     padding: 5px 20px;
@@ -280,14 +291,7 @@ header h2{
     animation-fill-mode: forwards;
     animation-delay: .4s;
 }
-
 #anim{
-    width: 1000px;
-    position: absolute;
-    opacity: .8;
-}
-
-#anim2{
     width: 300px;
     position: relative;
     display: flex;
@@ -295,7 +299,7 @@ header h2{
     align-items: center;
 }
 
-#anim2::before{
+#anim::before{
     content: "";
     display: block;
     position: absolute;

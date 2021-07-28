@@ -5,8 +5,10 @@ const wait = document.querySelector('#wait');
 const countWait = document.querySelector('#countWait');
 const left = document.querySelector('#left');
 const right = document.querySelector('#right');
+
 window.addEventListener("load", ()=>{
     let x = 0;
+
     function innerWait(){
         if( x > 100 ){
             return false;
@@ -14,34 +16,12 @@ window.addEventListener("load", ()=>{
             bubble.style.opacity = "1";
             left.style.opacity = "1";
             right.style.opacity = "1";
-            ok.addEventListener("click", ()=>{
-                wait.style.display = "none";
-                //=================================================SWIPE
-                const swiper = new Swiper('.swiper-container', {
-                    slidesPerView: 1,
-                    keyboard: {
-                        enabled: true,
-                    },
-                    pagination: {
-                        el: '.swiper-pagination',
-                        clickable: true,
-                    },
-                    navigation: {
-                        nextEl: '.swiper-button-next',
-                        prevEl: '.swiper-button-prev',
-                    },
-                });
-                //=================================================ANIMATION
-                const star = bodymovin.loadAnimation({
-                    container : document.getElementById('anim'),
-                    renderer : 'svg',
-                    loop : false,
-                    autoplay : true,
-                    path : 'anim.json'
-                });
 
+            function after(){
+                wait.style.display = "none";
+                //=================================================ANIMATION
                 const relaxed = bodymovin.loadAnimation({
-                    container : document.getElementById('anim2'),
+                    container : document.getElementById('anim'),
                     renderer : 'svg',
                     loop : true,
                     autoplay : true,
@@ -55,10 +35,57 @@ window.addEventListener("load", ()=>{
                     autoplay : true,
                     path : 'hello.json'
                 });
+            }
+
+            function slider(){
+                const swiper = new Swiper('.swiper-container', {
+                    slidesPerView: 1,
+                    keyboard: {
+                        enabled: true,
+                    },
+                    pagination: {
+                        el: '.swiper-pagination',
+                        clickable: true,
+                    },
+                    navigation: {
+                        nextEl: '.swiper-button-next',
+                        prevEl: '.swiper-button-prev',
+                    }
+                });
+            }
+
+            ok.addEventListener("click", ()=>{
+                after();
+                slider();
+                document.body.removeEventListener('keydown', keyClick);
             });
-            //================================================= 0-576
-            wait.classList.add("waitNone");
-            
+
+            document.body.addEventListener('keydown', keyClick);
+            function keyClick(e){
+                let confirmKey;
+                const key = e.keyCode;
+                if( key === 13 ){
+                    after();
+                    slider();
+                    confirmKey = true;
+                }else if( key === 37 ){
+                    left.classList.add("keyClick");
+                }else if( key === 39 ){
+                    right.classList.add("keyClick");
+                }
+
+                if( confirmKey ){
+                    document.body.removeEventListener('keydown', keyClick);
+                }
+            }
+            document.body.addEventListener('keyup', (e)=>{
+                const key = e.keyCode;
+                if( key === 37 ){
+                    left.classList.remove("keyClick");
+                }else if( key === 39 ){
+                    right.classList.remove("keyClick");
+                }
+            });
         }
 
         countWait.innerHTML = x+"%";

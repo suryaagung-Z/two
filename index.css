@@ -160,17 +160,12 @@ body{
 
 #ok{
     width: max-content;
-    padding: 5px 20px;
+    padding: 5px 10px;
     background-color: var(--white);
     border: 2px solid var(--gray);
     border-radius: 4px;
     font-size: 1em;
     margin: 10px 10px 10px auto;
-}
-
-#ok:active{
-    transform: scale(0.96);
-    border: 1px solid var(--gray);
 }
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ALL~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
@@ -186,9 +181,26 @@ a, .key, #ok{
     cursor: url(image/cursor.png) 5 0, auto;
 }
 
-.swiper-container {
+.swiper-container{
     width: 100%;
     height: 100%;
+}
+
+.swiper-pagination-bullet-active:nth-child(1){
+    background-color: var(--white);
+}
+
+.swiper-pagination-bullet-active{
+    background-color: var(--blue);
+}
+
+.swiper-pagination-bullet:hover{
+    cursor: url(image/cursor.png) 5 0, auto;
+    transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    -o-transform: scale(1.2);
 }
 
 .main-content{
@@ -205,10 +217,33 @@ a, .key, #ok{
     color: var(--gray);
 }
 
+.box-header{
+    display: flex;
+    justify-content: center;
+}
+
 #header{
+    display: inline-block;
     font-size: 5em;
     margin: 0 0 30px 0;
     color: var(--gray);
+    position: relative;
+    z-index: 1;
+}
+#header::before{
+    content: "";
+    position: absolute;
+    bottom: 5%;
+    left: 8%;
+    width: 95%;
+    height: 40%;
+    background-color: var(--blue);
+    opacity: .8;
+    z-index: -1;
+}
+
+#header.header-not-one{
+    margin: 0 0 40px 0;
 }
 
 #text{
@@ -218,14 +253,6 @@ a, .key, #ok{
 }
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~SCROLL BAR~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-.swiper-pagination-bullet-active:nth-child(1){
-    background-color: var(--white);
-}
-
-.swiper-pagination-bullet-active{
-    background-color: var(--blue);
-}
-
 html::-webkit-scrollbar,
 .container::-webkit-scrollbar{
     display: none;
@@ -277,20 +304,30 @@ header{
     flex-direction: column;
 }
 
-header h2{
-    margin-top: -5px;
-    letter-spacing: 5px;
-    border-radius: 5px;
-    border: 3px solid var(--white);
-    padding: 5px 15px;
-    background-color: var(--blue);
-    box-shadow: 15px 15px 10px rgb(104,191,175);
-    z-index: 1;
-    animation-name: open;
-    animation-duration: 2s;
-    animation-fill-mode: forwards;
-    animation-delay: .4s;
+#hello-friend{
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
 }
+
+#hello-friend::before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 90%;
+    background-color: rgb(135,209,195);
+    box-shadow: 20px 20px 10px rgb(104,191,175);
+    z-index: 0;
+    border: 1px solid var(--green);
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+
 #anim{
     width: 300px;
     position: relative;
@@ -301,7 +338,6 @@ header h2{
 
 #anim::before{
     content: "";
-    display: block;
     position: absolute;
     width: 135px;
     height: 135px;
@@ -408,7 +444,15 @@ nav .icon i.fb{
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ABOUT~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 #about .content-about{
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr 0.8fr;
+}
+
+#about p{
+    margin: 0;
+}
+
+#about #anim2{
+    position: relative;
 }
 
 #about svg{
@@ -463,10 +507,6 @@ nav .icon i.fb{
     margin: 0 !important;
 }
 
-#abilities #header{
-    text-align: center;
-}
-
 #abilities .content-abilities img{
     width: 60px;
 }
@@ -488,6 +528,7 @@ nav .icon i.fb{
 #abilities .gridSerti{
     display: grid;
     grid-template-columns: 1fr 1fr;
+    justify-content: center;
     gap: 30px;
 }
 
@@ -517,6 +558,18 @@ nav .icon i.fb{
     -o-transition: .3s;
 }
 
+#abilities .detail{
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    color: var(--white);
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 5px;
+    z-index: 1;
+}
+
 #abilities .serti:hover img{
     transform: scale(1.03);
     -webkit-transform: scale(1.03);
@@ -531,7 +584,8 @@ nav .icon i.fb{
 }
 
 #abilities .serti:hover h2,
-#abilities .serti:hover p{
+#abilities .serti:hover p,
+#abilities .serti:hover a{
     transform: translateX(0);
     -webkit-transform: translateX(0);
     -moz-transform: translateX(0);
@@ -539,43 +593,49 @@ nav .icon i.fb{
     -o-transform: translateX(0);
     opacity: 1;
 }
-
+#abilities .serti:not(:hover) a,
 #abilities .serti:not(:hover) h2,
 #abilities .serti:not(:hover) p,
 #abilities .serti:not(:hover) pre,
 #abilities .serti:not(:hover) img,
 #abilities .serti:not(:hover) .detail{
-    transition-delay: .3s;
+    transition-delay: .5s;
 }
 
 #abilities .serti:hover pre{
     opacity: 1;
 }
 
-#abilities .detail{
-    width: 100%;
-    height: 100%;
-    padding: 20px;
-    color: var(--white);
-    position: absolute;
-    top: 0;
-    left: 0;
-    border-radius: 5px;
-    transition: .3s;
-    -webkit-transition: .3s;
-    -moz-transition: .3s;
-    -ms-transition: .3s;
-    -o-transition: .3s;
-    z-index: 1;
-}
-
-#abilities .detail h2, .detail p, .detail pre{
+#abilities .detail a,
+           .detail p,
+           .detail pre,
+           .detail h2{
     transition: .3s;
     -webkit-transition: .3s;
     -moz-transition: .3s;
     -ms-transition: .3s;
     -o-transition: .3s;
     opacity: 0;
+}
+
+#abilities .detail a{
+    color: var(--white);
+    background-color: var(--blue);
+    padding: 10px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    border-radius: 0 0 0 5px;
+    -webkit-border-radius: 0 0 0 5px;
+    -moz-border-radius: 0 0 0 5px;
+    -ms-border-radius: 0 0 0 5px;
+    -o-border-radius: 0 0 0 5px;
+    transform: translateX(100%);
+    -webkit-transform: translateX(100%);
+    -moz-transform: translateX(100%);
+    -ms-transform: translateX(100%);
+    -o-transform: translateX(100%);
 }
 
 #abilities .detail h2{
@@ -593,6 +653,7 @@ nav .icon i.fb{
     -moz-transform: translateX(100%);
     -ms-transform: translateX(100%);
     -o-transform: translateX(100%);
+    margin-bottom: 1em;
 }
 
 #abilities .detail pre{
@@ -708,10 +769,6 @@ nav .icon i.fb{
     gap: 30px;
 }
 
-#contact span{
-    color: var(--blue);
-}
-
 #contact [placeholder]{
     font-size: 20px;
 }
@@ -776,7 +833,12 @@ nav .icon i.fb{
         font-size: 3em;
     }
 
-    /*===============================================SCROLLBAR===============================================*/
+    /*=================OPENER=================*/
+    #hello-friend{
+        width: 200px;
+    }
+
+    /*=================SCROLLBAR/*=================*/
     #contact{
         overflow: hidden;
     }
@@ -807,7 +869,7 @@ nav .icon i.fb{
         grid-template-rows: 1fr 1fr;
     }
 
-    #about #anim3{
+    #about #anim2{
         display: flex;
         justify-content: center;
     }
@@ -895,15 +957,10 @@ nav .icon i.fb{
     }
 
     #anim{
-        width: 800px;
-        position: absolute;
-    }
-
-    #anim2{
         width: 200px;
     }
 
-    #anim2::before{
+    #anim::before{
         content: "";
         display: block;
         position: absolute;

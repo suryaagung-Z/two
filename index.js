@@ -25,7 +25,15 @@ window.addEventListener("load", ()=>{
                     renderer : 'svg',
                     loop : true,
                     autoplay : true,
-                    path : 'anim2.json'
+                    path : 'anim.json'
+                });
+
+                const helloFriend = bodymovin.loadAnimation({
+                    container : document.getElementById('hello-friend'),
+                    renderer : 'svg',
+                    loop : false,
+                    autoplay : true,
+                    path : 'data.json'
                 });
 
                 const helloBoy = bodymovin.loadAnimation({

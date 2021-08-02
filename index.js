@@ -47,7 +47,6 @@ window.addEventListener("load", ()=>{
 
             function slider(){
                 const swiper = new Swiper('.swiper-container', {
-                    slidesPerView: 1,
                     keyboard: {
                         enabled: true,
                     },
@@ -104,7 +103,21 @@ window.addEventListener("load", ()=>{
     setInterval(innerWait, 20);
 });
 
-
+const toggleSwitch = document.querySelector('.mode input[type="checkbox"]');
+const moon = document.querySelector(".fa-sun");
+toggleSwitch.addEventListener('change', switchTheme);
+function switchTheme(e) {
+    if (e.target.checked) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        moon.classList.remove("fa-sun");
+        moon.classList.add("fa-moon");
+    }
+    else {
+        document.documentElement.setAttribute('data-theme', 'light');
+        moon.classList.add("fa-sun");
+        moon.classList.remove("fa-moon");
+    }    
+}
 
 //=================================================ABILITIES
 const hoverAll = document.querySelectorAll('#hover');

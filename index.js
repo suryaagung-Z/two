@@ -95,7 +95,7 @@ window.addEventListener("load", ()=>{
             });
         }
 
-        countWait.innerHTML = x+"%";
+        countWait.innerText = x+"%";
 
         x++;
         return x;
@@ -103,20 +103,30 @@ window.addEventListener("load", ()=>{
     setInterval(innerWait, 20);
 });
 
-const toggleSwitch = document.querySelector('.mode input[type="checkbox"]');
+const checkbox = document.querySelector('.mode input[type="checkbox"]');
 const moon = document.querySelector(".fa-sun");
-toggleSwitch.addEventListener('change', switchTheme);
-function switchTheme(e) {
-    if (e.target.checked) {
+const textMode = document.querySelector("#text-mode");
+let coba = checkbox.addEventListener('change', switchTheme);
+function switchTheme() {
+    if(checkbox.checked) {
         document.documentElement.setAttribute('data-theme', 'dark');
         moon.classList.remove("fa-sun");
         moon.classList.add("fa-moon");
+        textMode.innerText = "Dark mode";
     }
-    else {
+    else{
         document.documentElement.setAttribute('data-theme', 'light');
         moon.classList.add("fa-sun");
         moon.classList.remove("fa-moon");
-    }    
+        textMode.innerText = "Light mode";
+    }
+
+    return checkbox.checked;
+}
+if( coba == true ){
+    console.log(1);
+}else{
+    console.log(0);
 }
 
 //=================================================ABILITIES
@@ -142,11 +152,11 @@ for( let hover = 0; hover<hoverAll.length; hover++ ){
             let five = (count-70)+"%";
             five = five.replace("-", "");
 
-            replaceAll[0].innerHTML = one;
-            replaceAll[1].innerHTML = two;
-            replaceAll[2].innerHTML = three;
-            replaceAll[3].innerHTML = four;
-            replaceAll[4].innerHTML = five;
+            replaceAll[0].innerText = one;
+            replaceAll[1].innerText = two;
+            replaceAll[2].innerText = three;
+            replaceAll[3].innerText = four;
+            replaceAll[4].innerText = five;
 
             count++;
         }

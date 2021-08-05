@@ -6,46 +6,45 @@ const countWait = document.querySelector('#countWait');
 const left = document.querySelector('#left');
 const right = document.querySelector('#right');
 
-window.addEventListener("load", ()=>{
+window.addEventListener("load", () => {
     let x = 0;
 
-    function innerWait(){
-        if( x > 100 ){
+    function innerWait() {
+        if (x > 100) {
             return false;
-        }else if(x === 100){
+        } else if (x === 100) {
             bubble.style.opacity = "1";
             left.style.opacity = "1";
             right.style.opacity = "1";
 
-            function after(){
+            function after() {
                 wait.style.display = "none";
                 //=================================================ANIMATION
                 const relaxed = bodymovin.loadAnimation({
-                    container : document.getElementById('anim'),
-                    renderer : 'svg',
-                    loop : true,
-                    autoplay : true,
-                    path : 'anim.json'
+                    container: document.getElementById('anim'),
+                    renderer: 'svg',
+                    loop: true,
+                    autoplay: true,
+                    path: 'anim.json'
                 });
 
                 const helloFriend = bodymovin.loadAnimation({
-                    container : document.getElementById('hello-friend'),
-                    renderer : 'svg',
-                    loop : false,
-                    autoplay : true,
-                    path : 'data.json'
+                    container: document.getElementById('hello-friend'),
+                    renderer: 'svg',
+                    loop: false,
+                    autoplay: true,
+                    path: 'data.json'
                 });
 
                 const helloBoy = bodymovin.loadAnimation({
-                    container : document.getElementById('helloBoy'),
-                    renderer : 'svg',
-                    loop : true,
-                    autoplay : true,
-                    path : 'hello.json'
+                    container: document.getElementById('helloBoy'),
+                    renderer: 'svg',
+                    loop: true,
+                    autoplay: true,
+                    path: 'hello.json'
                 });
-            }
 
-            function slider(){
+                //=================================================SWIPER JS
                 const swiper = new Swiper('.swiper-container', {
                     keyboard: {
                         enabled: true,
@@ -61,44 +60,43 @@ window.addEventListener("load", ()=>{
                 });
             }
 
-            ok.addEventListener("click", ()=>{
+            ok.addEventListener("click", () => {
                 after();
-                slider();
                 document.body.removeEventListener('keydown', keyClick);
             });
 
             document.body.addEventListener('keydown', keyClick);
-            function keyClick(e){
+            function keyClick(e) {
                 let confirmKey;
                 const key = e.keyCode;
-                if( key === 13 ){
+                if (key === 13) {
                     after();
-                    slider();
                     confirmKey = true;
-                }else if( key === 37 ){
+                } else if (key === 37) {
                     left.classList.add("keyClick");
-                }else if( key === 39 ){
+                } else if (key === 39) {
                     right.classList.add("keyClick");
                 }
 
-                if( confirmKey ){
+                if (confirmKey) {
                     document.body.removeEventListener('keydown', keyClick);
                 }
             }
-            document.body.addEventListener('keyup', (e)=>{
+            document.body.addEventListener('keyup', keyUp);
+            function keyUp(e) {
                 const key = e.keyCode;
-                if( key === 37 ){
+                if (key === 37) {
                     left.classList.remove("keyClick");
-                }else if( key === 39 ){
+                } else if (key === 39) {
                     right.classList.remove("keyClick");
                 }
-            });
-        }
+            }
+        } //close elseif( x === 100 )
 
-        countWait.innerText = x+"%";
+        countWait.innerText = x + "%";
 
         x++;
-        return x;
+        return;
     }
     setInterval(innerWait, 20);
 });
@@ -106,50 +104,43 @@ window.addEventListener("load", ()=>{
 const checkbox = document.querySelector('.mode input[type="checkbox"]');
 const moon = document.querySelector(".fa-sun");
 const textMode = document.querySelector("#text-mode");
-let coba = checkbox.addEventListener('change', switchTheme);
+checkbox.addEventListener('change', switchTheme);
 function switchTheme() {
-    if(checkbox.checked) {
+    if (checkbox.checked) {
         document.documentElement.setAttribute('data-theme', 'dark');
         moon.classList.remove("fa-sun");
         moon.classList.add("fa-moon");
         textMode.innerText = "Dark mode";
     }
-    else{
+    else {
         document.documentElement.setAttribute('data-theme', 'light');
         moon.classList.add("fa-sun");
         moon.classList.remove("fa-moon");
         textMode.innerText = "Light mode";
     }
-
-    return checkbox.checked;
-}
-if( coba == true ){
-    console.log(1);
-}else{
-    console.log(0);
 }
 
 //=================================================ABILITIES
 const hoverAll = document.querySelectorAll('#hover');
 const replaceAll = document.querySelectorAll('#ganti');
 
-for( let hover = 0; hover<hoverAll.length; hover++ ){
-    hoverAll[hover].addEventListener('mouseover', ()=> {
+for (let hover = 0; hover < hoverAll.length; hover++) {
+    hoverAll[hover].addEventListener('mouseover', () => {
         let count = 0;
-        function out(){
-            if( count > 100 ){
+        function out() {
+            if (count > 100) {
                 return false;
             }
-            
-            let one = (count-5)+"%";
+
+            let one = (count - 5) + "%";
             one = one.replace("-", "");
-            let two = (count-5)+"%";
+            let two = (count - 5) + "%";
             two = two.replace("-", "");
-            let three = (count-90)+"%";
+            let three = (count - 90) + "%";
             three = three.replace("-", "");
-            let four = (count-70)+"%";
+            let four = (count - 70) + "%";
             four = four.replace("-", "");
-            let five = (count-70)+"%";
+            let five = (count - 70) + "%";
             five = five.replace("-", "");
 
             replaceAll[0].innerText = one;
@@ -160,29 +151,29 @@ for( let hover = 0; hover<hoverAll.length; hover++ ){
 
             count++;
         }
-        
+
         setInterval(out, 5);
     });
 }
 
 //=================================================CONTACT EMAIL
 var form = document.getElementById("my-form");
-    
-    async function handleSubmit(event) {
-      event.preventDefault();
-      var status = document.getElementById("my-form-status");
-      var data = new FormData(event.target);
-      fetch(event.target.action, {
+
+async function handleSubmit(event) {
+    event.preventDefault();
+    var status = document.getElementById("my-form-status");
+    var data = new FormData(event.target);
+    fetch(event.target.action, {
         method: form.method,
         body: data,
         headers: {
             'Accept': 'application/json'
         }
-      }).then(response => {
+    }).then(response => {
         status.innerHTML = "\"Thanks friend!!!\"";
         form.reset()
-      }).catch(error => {
+    }).catch(error => {
         status.innerHTML = "Oops sorry! There was a problem submitting your form"
-      });
-    }
-    form.addEventListener("submit", handleSubmit)
+    });
+}
+form.addEventListener("submit", handleSubmit)

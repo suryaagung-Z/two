@@ -94,8 +94,15 @@ body{
     margin: 20px 20px 0 20px;
 }
 
+#bubble .next-for-large{
+    display: block;
+}
+
+#bubble .next-for-small{
+    display: none;
+}
+
 #countWait{
-    width: max-content;
     font-size: 1.5em;
 }
 
@@ -559,9 +566,17 @@ nav .icon i.fb{
 }
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ABILITIES~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-#abilities .abilities, .tools, .certificates{
+.content-abilities .abilities,
+.content-abilities .tools,
+.content-abilities .certificates{
     margin-bottom: 60px;
 }
+
+.content-abilities .abilities section,
+.content-abilities .abilities img{
+    pointer-events: none;
+}
+
 
 #abilities .content-abilities ul{
     margin: 0;
@@ -1006,26 +1021,29 @@ nav .icon i.fb{
 
 @media (max-width:576px){
     /*=================KEYBOARD=================*/
+    .box-wait{
+        flex-direction: column-reverse;
+    }
+    
     #bubble{
         width: max-content;
-        top: 60px;
-        right: -100px;
+        position: static;
     }
 
     #bubble::after{
-        width: 20px;
-        height: 30px;
-        top: -15px;
-        left: -10px;
-        transform: rotate(135deg);
-        -webkit-transform: rotate(135deg);
-        -moz-transform: rotate(135deg);
-        -ms-transform: rotate(135deg);
-        -o-transform: rotate(135deg);
+        display: none;
     }
 
     #bubble p{
         display: none;
+    }
+
+    #bubble .next-for-large{
+        display: none;
+    }
+
+    #bubble .next-for-small{
+        display: block;
     }
 
     #ok{

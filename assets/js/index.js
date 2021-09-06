@@ -25,7 +25,7 @@ window.addEventListener("load", () => {
                     renderer: 'svg',
                     loop: true,
                     autoplay: true,
-                    path: 'anim.json'
+                    path: 'assets/js/anim.json'
                 });
 
                 const helloFriend = bodymovin.loadAnimation({
@@ -33,7 +33,7 @@ window.addEventListener("load", () => {
                     renderer: 'svg',
                     loop: false,
                     autoplay: true,
-                    path: 'data.json'
+                    path: 'assets/js/data.json'
                 });
 
                 const helloBoy = bodymovin.loadAnimation({
@@ -41,7 +41,7 @@ window.addEventListener("load", () => {
                     renderer: 'svg',
                     loop: true,
                     autoplay: true,
-                    path: 'hello.json'
+                    path: 'assets/js/hello.json'
                 });
 
                 //=================================================SWIPER JS
@@ -157,23 +157,37 @@ for (let hover = 0; hover < hoverAll.length; hover++) {
 }
 
 //=================================================CONTACT EMAIL
-var form = document.getElementById("my-form");
+const send = document.querySelector('#send');
 
-async function handleSubmit(event) {
-    event.preventDefault();
-    var status = document.getElementById("my-form-status");
-    var data = new FormData(event.target);
-    fetch(event.target.action, {
-        method: form.method,
-        body: data,
-        headers: {
-            'Accept': 'application/json'
-        }
-    }).then(response => {
-        status.innerHTML = "\"Thanks friend!!!\"";
-        form.reset()
-    }).catch(error => {
-        status.innerHTML = "Oops sorry! There was a problem submitting your form"
-    });
-}
-form.addEventListener("submit", handleSubmit)
+send.addEventListener('click', (e)=>{
+    e.preventDefault();
+
+    let name = document.getElementById('name').value;
+    let email = document.getElementById('email').value;
+    let text = document.getElementById('message').value;
+
+    if( (name == '') || (email == '') || (text == '') ){
+        alert('message cannot be empty');
+    }else{
+
+        Email.send({
+            SecureToken : "4c21dfcb-23e8-4b0a-b671-4829dca93c73",
+            To : "suryaagung118@gmail.com",
+            From : `${email}`,
+            Subject : `EMAIL FROM : ${name}`,
+            Body : `Message : ${text}`
+        }).then(
+          message => {
+              if( message == "OK" ){
+                  alert('Thanks friend');
+              }else{
+                  alert('Message failed to be sent');
+                  location.reload();
+              }
+          }
+        );
+        
+    }
+
+
+});

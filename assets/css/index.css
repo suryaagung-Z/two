@@ -275,7 +275,7 @@ a,
 .mode,
 .slider{
     text-decoration: none;
-    cursor: url(image/cursor.png) 5 0, auto;
+    cursor: url(../image/cursor.png) 5 0, auto;
 }
 
 .swiper-container{
@@ -292,7 +292,7 @@ a,
 }
 
 .swiper-pagination-bullet:hover{
-    cursor: url(image/cursor.png) 5 0, auto;
+    cursor: url(../image/cursor.png) 5 0, auto;
     transform: scale(1.2);
     -webkit-transform: scale(1.2);
     -moz-transform: scale(1.2);
@@ -896,6 +896,7 @@ nav .icon i.fb{
 
 #contact #message{
     grid-column-end: span 2;
+    font-family: 'Montserrat', sans-serif;
 }
 
 #contact button{
@@ -912,7 +913,7 @@ nav .icon i.fb{
 
 #contact button:hover{
     background-color: #46b9a4;
-    cursor: url(image/cursor.png) 5 0, auto;
+    cursor: url(../image/cursor.png) 5 0, auto;
 }
 
 #contact #my-form-status{

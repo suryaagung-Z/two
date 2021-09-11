@@ -162,24 +162,28 @@ const send = document.querySelector('#send');
 send.addEventListener('click', (e)=>{
     e.preventDefault();
 
-    let name = document.getElementById('name').value;
-    let email = document.getElementById('email').value;
-    let text = document.getElementById('message').value;
+    let name = document.getElementById('name');
+    let email = document.getElementById('email');
+    let text = document.getElementById('message');
 
-    if( (name == '') || (email == '') || (text == '') ){
+    if( (name.value == '') || (email.value == '') || (text.value == '') ){
         alert('message cannot be empty');
+        
     }else{
 
         Email.send({
             SecureToken : "4c21dfcb-23e8-4b0a-b671-4829dca93c73",
             To : "suryaagung118@gmail.com",
-            From : `${email}`,
-            Subject : `EMAIL FROM : ${name}`,
-            Body : `Message : ${text}`
+            From : `${email.value}`,
+            Subject : `EMAIL FROM : ${name.value}`,
+            Body : `Message : ${text.value}`
         }).then(
           message => {
               if( message == "OK" ){
                   alert('Thanks friend');
+                  name.value  = '';
+                  email.value = '';
+                  text.value  = '';
               }else{
                   alert('Message failed to be sent');
                   location.reload();

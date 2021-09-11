@@ -239,7 +239,7 @@ body{
     left: 5px;
 }
 input:checked + .slider{
-    background-color: #17181f;
+    background-color: #252323;
 }
 
 input:checked + .slider i{
@@ -263,7 +263,7 @@ input:checked + .slider i{
 }
 
 [data-theme="dark"]{
-    --white: #17181f;
+    --white: #252323;
     --blueInLight: #f7f7f7;
     --gray: #f7f7f7;
     --green: #b5c07c;

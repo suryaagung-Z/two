@@ -1,0 +1,313 @@
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~KEYBOARD~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+#wait{
+    width: 100%;
+    height: 100%;
+    color: var(--gray);
+    background-color: var(--blue);
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 20;
+}
+
+.box-wait{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#bubble{
+    width: 200px;
+    background-color: var(--white);
+    position: absolute;
+    top: -50px;
+    right: -200px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    opacity: 0;
+    transition: 1s;
+    -webkit-transition: 1s;
+    -moz-transition: 1s;
+    -ms-transition: 1s;
+    -o-transition: 1s;
+}
+
+#bubble::after{
+    content: "";
+    position: absolute;
+    bottom: -20px;
+    left: -18px;
+    width: 30px;
+    height: 40px;
+    background-color: var(--white);
+    clip-path: polygon(0 0, 50% 100%, 100% 0);
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+}
+
+#bubble p{
+    margin: 20px 20px 0 20px;
+}
+
+#bubble .next-for-large{
+    display: block;
+}
+
+#bubble .next-for-small{
+    display: none;
+}
+
+#countWait{
+    font-size: 1.5em;
+}
+
+#keyboard{
+    background-color: var(--blue);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+
+.key{
+    width: 50px;
+    height: 50px;
+    margin: 5px;
+    background-color: var(--white);
+    color: var(--gray);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    box-shadow: 2px 2px rgba(0,0,0,0.3);
+    opacity: .5;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+}
+
+.up{
+    grid-area: 1 / 2 / 2 / 3;
+    pointer-events: none;
+}
+.left{
+    grid-area: 2 / 1 / 3 / 2;
+}
+.down{
+    grid-area: 2 / 2 / 3 / 3;
+    pointer-events: none;
+}
+.right{
+    grid-area: 2 / 3 / 3 / 4;
+}
+
+.key:active{
+    width: 49px;
+    height: 49px;
+    box-shadow: 0 0 var(--gray);
+    transform: translate(1px, 1px);
+    -webkit-transform: translate(1px, 1px);
+    -moz-transform: translate(1px, 1px);
+    -ms-transform: translate(1px, 1px);
+    -o-transform: translate(1px, 1px);
+}
+
+.keyClick{
+    width: 49px;
+    height: 49px;
+    box-shadow: 0 0 var(--gray);
+    transform: translate(1px, 1px);
+    -webkit-transform: translate(1px, 1px);
+    -moz-transform: translate(1px, 1px);
+    -ms-transform: translate(1px, 1px);
+    -o-transform: translate(1px, 1px);
+}
+
+#ok{
+    width: max-content;
+    padding: 5px 10px;
+    background-color: var(--white);
+    border: 2px solid var(--gray);
+    border-radius: 4px;
+    font-size: 1em;
+    margin: 10px 10px 10px auto;
+}
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~MODE~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+.box-mode{
+    position: fixed;
+    left: 20px;
+    bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 20;
+}
+
+.mode{
+    width: 50px;
+    height: 25px;
+    border: 1px solid var(--gray);
+    display: block;
+    border-radius: 30px;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    -ms-border-radius: 30px;
+    -o-border-radius: 30px;
+}
+
+#text-mode{
+    margin: 0 0 5px 0;
+    color: var(--gray);
+    font-size: 0.8em;
+    font-weight: 600;
+}
+
+.mode input{
+    display:none;
+}
+
+.slider,
+.slider i{
+    transition: .4s;
+    -webkit-transition: .4s;
+    -moz-transition: .4s;
+    -ms-transition: .4s;
+    -o-transition: .4s;
+}
+
+.slider{
+    width: 100%;
+    height: 100%;
+    background-color: var(--grayInLight);
+    cursor: pointer;
+    border-radius: 34px;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.slider i{
+    color: var(--blue);
+    position: absolute;
+    left: 5px;
+}
+input:checked + .slider{
+    background-color: #252323;
+}
+
+input:checked + .slider i{
+    left: 26px;
+}
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~SCROLL BAR~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+html::-webkit-scrollbar,
+.container::-webkit-scrollbar{
+    display: none;
+}
+
+#project::-webkit-scrollbar,
+#abilities::-webkit-scrollbar,
+#contact::-webkit-scrollbar{
+	width: 12px;
+	background-color: #F5F5F5;
+}
+
+#project::-webkit-scrollbar-track,
+#abilities::-webkit-scrollbar-track,
+#contact::-webkit-scrollbar-track{
+    box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: #F5F5F5;
+}
+
+#project::-webkit-scrollbar-thumb,
+#abilities::-webkit-scrollbar-thumb,
+#contact::-webkit-scrollbar-thumb{
+	border-radius: 10px;
+    box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: var(--green);
+}
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~POPUP~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+.box-popup{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.popup{
+    position: fixed;
+    top: -100%;
+    visibility: hidden;
+    opacity: 0;
+    transition: all .5s;
+    z-index: 100;
+}
+
+.popup #box-content-popup{
+    color: #fff;
+    padding: 20px 30px;
+    border-radius: 5px;
+    background-color: lightseagreen;
+}
+
+.popup #content-popup,
+.popup #x{
+    font-size: 1em;
+}
+
+.bg_popup{
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    transition-duration: .3s;
+    z-index: 30;
+}
+
+.popup #content-popup{
+    pointer-events: none;
+}
+
+#x{
+    position: absolute;
+    top: 2px;
+    right: 4px;
+    cursor: url(../image/cursor.png) 5 0, auto;
+}
+.x-open{
+    visibility: visible;
+    animation-name: popup;
+    animation-duration: .5s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes popup {
+    0%{
+        top: -30px;
+    }
+    50%{
+        top: 30px;
+    }
+    100%{
+        top: 20px;
+        opacity: 1;
+    }
+}

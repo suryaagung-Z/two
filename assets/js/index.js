@@ -1,4 +1,4 @@
-//=================================================WAIT
+//================================================================WAIT
 const swipeContainer = document.querySelector('.swiper-container');
 const bubble = document.querySelector('#bubble');
 const wait = document.querySelector('#wait');
@@ -104,23 +104,26 @@ window.addEventListener("load", () => {
 const checkbox = document.querySelector('.mode input[type="checkbox"]');
 const moon = document.querySelector(".fa-sun");
 const textMode = document.querySelector("#text-mode");
+const neon = document.querySelector('#neon');
 checkbox.addEventListener('change', switchTheme);
 function switchTheme() {
     if (checkbox.checked) {
         document.documentElement.setAttribute('data-theme', 'dark');
+        neon.classList.add('neon');
         moon.classList.remove("fa-sun");
         moon.classList.add("fa-moon");
         textMode.innerText = "Dark mode";
     }
     else {
         document.documentElement.setAttribute('data-theme', 'light');
+        neon.classList.remove('neon');
         moon.classList.add("fa-sun");
         moon.classList.remove("fa-moon");
         textMode.innerText = "Light mode";
     }
 }
 
-//=================================================ABILITIES
+//================================================================ABILITIES
 const hoverAll = document.querySelectorAll('#hover');
 const replaceAll = document.querySelectorAll('#ganti');
 
@@ -156,7 +159,27 @@ for (let hover = 0; hover < hoverAll.length; hover++) {
     });
 }
 
-//=================================================CONTACT EMAIL
+//================================================================POPUP
+const contentPopup = document.querySelector('.popup');
+const text_popup = document.querySelector('#content-popup');
+const bg_popup = document.querySelector('#bg-popup');
+const x = contentPopup.querySelector('#x');
+let text_p;
+
+function popup(text_p){
+    contentPopup.classList.add('x-open');
+    bg_popup.classList.add('bg_popup');
+    text_popup.innerText = text_p;
+
+    window.onclick = (e)=>{
+        if( !e.target.matches('#box-content-popup') ){
+            contentPopup.classList.remove('x-open');
+            bg_popup.classList.remove('bg_popup');
+        }
+    }
+}
+
+//================================================================CONTACT EMAIL
 const send = document.querySelector('#send');
 
 send.addEventListener('click', (e)=>{
@@ -178,17 +201,17 @@ send.addEventListener('click', (e)=>{
             Subject : `EMAIL FROM : ${name.value}`,
             Body : `Message : ${text.value}`
         }).then(
-          message => {
-              if( message == "OK" ){
-                  alert('Thanks friend');
-                  name.value  = '';
-                  email.value = '';
-                  text.value  = '';
-              }else{
-                  alert('Message failed to be sent');
-                  location.reload();
-              }
-          }
+            message => {
+                if( message == "OK" ){
+                    popup('Message successfully sent, Thanks friend!');
+                    name.value  = '';
+                    email.value = '';
+                    text.value  = '';
+                }else{
+                    popup('Message failed to be sent');
+                    location.reload();
+                }
+            }
         );
         
     }

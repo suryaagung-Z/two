@@ -12,6 +12,8 @@
 
     <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
     <link rel="stylesheet" href="assets/css/index.css">
+    <link rel="stylesheet" href="assets/css/component.css">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -128,10 +130,11 @@
                 <div class="content-about content">
                     <section id="box-text">
                         <h1 id="header">ABOUT</h1>
-                        <p id="text">Hello, I'm surya agung, I'm a student who just stepped in the world of coding. I
+                        <p id="text">Hello, I'm <span id="neon" data-neon="surya agung">surya agung</span>, I'm a student who just stepped in the world of coding. I
                             want to be a senior programmer with a good knowledge of front-end and back-end techniques. I
                             love structure and order and I also maintain quality. I also love working in teams. As the
-                            saying goes: 'two heads are better than one'</p>
+                            saying goes: 'two heads are better than one'
+                        </p>
                     </section>
                     <section id="anim2">
                         <div id="helloBoy">
@@ -579,7 +582,7 @@
                     </div>
                 </nav>
 
-                <div class="content">
+                <div class="content content-contact">
                     <h1 id="header" class="header-not-one">SAY HELLO</h1>
                     <form method="POST" class="form" id="my-form">
                         <input type="text" id="name" name="name" autocomplete="off" placeholder="Your name" required="required">
@@ -595,6 +598,18 @@
         </div>
 
         <div class="swiper-pagination"></div>
+    </div>
+
+    <div class="box-popup">
+        <div class="popup">
+            <div id="box-content-popup">
+                <div id="content-popup">
+                    hello world!!!
+                </div>
+                <i class="fas fa-times" id="x"></i>
+            </div>
+        </div>
+        <div id="bg-popup"></div>
     </div>
 
     <script src="assets/js/lottie.js"></script>

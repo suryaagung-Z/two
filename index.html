@@ -35,7 +35,7 @@
 <body>
     <div class="box-mode">
         <p id="text-mode">
-            Light mode
+            Dark mode
         </p>
         <label class="mode" for="checkbox">
             <input type="checkbox" id="checkbox" />
@@ -599,7 +599,9 @@
 
                         <textarea name="message" id="message" placeholder="Your message" required="required"></textarea>
 
-                        <button id="send" type="submit">SEND</button>
+                        <button id="send" type="submit">
+                            SEND
+                        </button>
                     </form>
                 </div>
             </div>
@@ -608,17 +610,7 @@
         <div class="swiper-pagination"></div>
     </div>
 
-    <div class="box-popup">
-        <div class="popup">
-            <div id="box-content-popup">
-                <div id="content-popup">
-                    hello world!!!
-                </div>
-                <i class="fas fa-times" id="x"></i>
-            </div>
-        </div>
-        <div id="bg-popup"></div>
-    </div>
+    <div class="box-popup" id="box-popup"></div>
 
     <script src="assets/js/lottie.js"></script>
     <script src="assets/js/swiper-bundle.min.js"></script>

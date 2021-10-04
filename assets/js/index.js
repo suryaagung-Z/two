@@ -112,14 +112,14 @@ function switchTheme() {
         neon.classList.add('neon');
         moon.classList.remove("fa-sun");
         moon.classList.add("fa-moon");
-        textMode.innerText = "Dark mode";
+        textMode.innerText = "Light mode";
     }
     else {
         document.documentElement.setAttribute('data-theme', 'light');
         neon.classList.remove('neon');
         moon.classList.add("fa-sun");
         moon.classList.remove("fa-moon");
-        textMode.innerText = "Light mode";
+        textMode.innerText = "Dark mode";
     }
 }
 
@@ -160,23 +160,19 @@ for (let hover = 0; hover < hoverAll.length; hover++) {
 }
 
 //================================================================POPUP
-const contentPopup = document.querySelector('.popup');
-const text_popup = document.querySelector('#content-popup');
-const bg_popup = document.querySelector('#bg-popup');
-const x = contentPopup.querySelector('#x');
-let text_p;
+const contentPopup = document.querySelector('#box-popup');
 
-function popup(text_p){
-    contentPopup.classList.add('x-open');
-    bg_popup.classList.add('bg_popup');
-    text_popup.innerText = text_p;
-
-    window.onclick = (e)=>{
-        if( !e.target.matches('#box-content-popup') ){
-            contentPopup.classList.remove('x-open');
-            bg_popup.classList.remove('bg_popup');
-        }
-    }
+const popup = function(text_p){
+    const popup = document.createElement('div');
+    popup.classList.add('popup')
+    contentPopup.classList.add('box-popup-bg');
+    popup.appendChild(document.createTextNode(text_p));
+    contentPopup.appendChild(popup);
+    
+        setTimeout(()=>{
+            popup.remove();
+            contentPopup.classList.remove('box-popup-bg');
+        }, 3000)
 }
 
 //================================================================CONTACT EMAIL
@@ -185,31 +181,49 @@ const send = document.querySelector('#send');
 send.addEventListener('click', (e)=>{
     e.preventDefault();
 
-    let name = document.getElementById('name');
-    let email = document.getElementById('email');
-    let text = document.getElementById('message');
+    send.innerText = '';
+    const wait_send = document.createElement('div');
+    wait_send.classList.add('wait-send');
+    send.appendChild(wait_send);
 
-    if( (name.value == '') || (email.value == '') || (text.value == '') ){
-        alert('message cannot be empty');
-        
+    const name = document.getElementById('name');
+    const email = document.getElementById('email');
+    const text = document.getElementById('message');
+    const rgx = /[\!\#\$\<\>]/g;
+
+    if( rgx.test(name.value) || rgx.test(email.value) || rgx.test(text.value) ){
+        popup('Messages must not have any special characters 🙂');
+        send.innerText = 'SEND';
+        wait_send.remove();
+    }else if( name.value == '' || email.value == '' || text.value == '' ){
+        popup('Message cannot be empty 🙂');
+        send.innerText = 'SEND';
+        wait_send.remove();
     }else{
 
         Email.send({
             SecureToken : "4c21dfcb-23e8-4b0a-b671-4829dca93c73",
             To : "suryaagung118@gmail.com",
             From : `${email.value}`,
-            Subject : `EMAIL FROM : ${name.value}`,
-            Body : `Message : ${text.value}`
+            Subject : `🥳suryaagung.rf.gd🥳`,
+            Body : `<b>Name :</b> ${name.value} <br>
+                    <b>Message :</b> ${text.value}`
         }).then(
             message => {
                 if( message == "OK" ){
-                    popup('Message successfully sent, Thanks friend!');
+                    popup('Message successfully sent, Thanks friend 😇');
                     name.value  = '';
                     email.value = '';
                     text.value  = '';
+                    send.innerText = 'SEND';
+                    wait_send.remove();
                 }else{
-                    popup('Message failed to be sent');
-                    location.reload();
+                    popup('Message failed to be sent 😥');
+                    name.value  = '';
+                    email.value = '';
+                    text.value  = '';
+                    send.innerText = 'SEND';
+                    wait_send.remove();
                 }
             }
         );

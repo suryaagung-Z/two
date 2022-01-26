@@ -22,6 +22,7 @@ body {
   height: 100vh;
   background-color: var(--white);
   display: none;
+  color: var(--gray);
 }
 .display-300 div {
   width: 100%;
@@ -32,7 +33,8 @@ body {
 }
 .display-300 p {
   font-size: 1em;
-  margin: 0;
+  margin: 0 20px;
+  text-align: center;
 }
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ALL~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
@@ -63,10 +65,10 @@ a,
 .key,
 #ok,
 .mode,
-.slider,
+.box-mode .slider,
 #x {
   text-decoration: none;
-  cursor: url(../image/cursor.png) 5 0, auto;
+  cursor: url(../image/more/cursor.png) 5 0, auto;
 }
 
 .swiper-container {
@@ -83,7 +85,7 @@ a,
 }
 
 .swiper-pagination-bullet:hover {
-  cursor: url(../image/cursor.png) 5 0, auto;
+  cursor: url(../image/more/cursor.png) 5 0, auto;
   transform: scale(1.2);
   -webkit-transform: scale(1.2);
   -moz-transform: scale(1.2);
@@ -394,39 +396,110 @@ nav .icon i.fb {
   margin-bottom: 60px;
 }
 
+.content-abilities {
+  padding: 40px !important;
+}
+
+.content-abilities .top {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+}
+
 .content-abilities .abilities section,
 .content-abilities .abilities img {
   pointer-events: none;
 }
 
-#abilities .content-abilities ul {
+.content-abilities .abilities img,
+.content-abilities .tools img {
+  -webkit-perspective: 100px;
+  perspective: 100px;
+  transition: 1s;
+}
+
+#abilities .content-abilities .CAT {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+#abilities .content-abilities .cat {
+  width: max-content;
   margin: 0;
   padding: 0;
   list-style-type: none;
   display: grid;
   justify-content: center;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 50px 30px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5px;
 }
 
-#abilities .content-abilities li {
+#abilities .content-abilities .box-section {
   display: flex;
   justify-content: center;
 }
 
-#abilities .content-abilities li div {
-  width: 150px;
-  height: 150px;
+#abilities .content-abilities .box-section {
+  width: 160px;
+  height: 160px;
   border-radius: 5px;
   background-color: var(--green);
-  box-shadow: 0 4px 0 var(--blue);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  transition: 0.3s;
 }
 
-#abilities .content-abilities li div:hover p {
+#abilities .content-abilities .box-section:hover {
+  animation-name: boxAb;
+  animation-duration: 0.5s;
+  animation-fill-mode: both;
+  box-shadow: 0 1px 4px 1px var(--gray);
+  z-index: 100;
+}
+
+#abilities .content-abilities .box-section:not(:hover) {
+  animation-name: boxAb-X;
+  animation-duration: 0.5s;
+  animation-fill-mode: both;
+}
+
+@keyframes boxAb {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1.1);
+  }
+}
+
+@keyframes boxAb-X {
+  0% {
+    transform: scale(1.1);
+  }
+  50% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+#abilities .content-abilities .box-section:hover img {
+  transform: rotateY(360deg) !important;
+}
+
+#abilities .content-abilities .box-section:not(:hover) img {
+  transition: 0s;
+  transform: rotateY(0deg) !important;
+}
+
+#abilities .content-abilities .box-section:hover p {
   margin: 0 !important;
 }
 
@@ -437,6 +510,9 @@ nav .icon i.fb {
 #abilities p {
   text-align: center;
   margin: 0;
+}
+
+#abilities p.text-expe {
   transition: 0.3s;
 }
 
@@ -717,6 +793,7 @@ textarea {
 
 #contact textarea {
   height: 200px;
+  resize: none;
 }
 
 #contact #message {
@@ -741,7 +818,7 @@ textarea {
 
 #contact button:hover {
   background-color: #46b9a4;
-  cursor: url(../image/cursor.png) 5 0, auto;
+  cursor: url(../image/more/cursor.png) 5 0, auto;
 }
 
 #contact .wait-send {
@@ -766,6 +843,13 @@ textarea {
 }
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~MEDIA QUERY~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+@media screen and (max-width: 1200px) {
+  /*=================ABILITIES=================*/
+  .content-abilities .top {
+    display: block;
+  }
+}
+
 @media screen and (max-width: 900px) {
   /*=================ALL=================*/
   .main-content .content {
@@ -786,7 +870,7 @@ textarea {
     width: 200px;
   }
 
-  /*=================SCROLLBAR/*=================*/
+  /*=================SCROLLBAR=================*/
   #contact {
     overflow: hidden;
   }
@@ -924,11 +1008,8 @@ textarea {
   }
 
   /*=================ABILITIES=================*/
-  #abilities .content-abilities ul {
-    gap: 30px;
-  }
 
-  #abilities .content-abilities li div {
+  #abilities .content-abilities .box-section {
     width: 80px;
     height: 80px;
   }
@@ -997,6 +1078,7 @@ textarea {
   textarea {
     border: 1px solid var(--gray);
     background-color: var(--white) !important;
+    color: var(--gray);
   }
 }
 
